@@ -1,8 +1,8 @@
-# https://www.analyticsvidhya.com/blog/2021/07/building-a-hand-tracking-system-using-opencv/
-import cv2
+## https://www.analyticsvidhya.com/blog/2021/07/building-a-hand-tracking-system-using-opencv/
+
 import time
 import mediapipe as mp
-
+import cv2
 cap = cv2.VideoCapture(0)
 pTime = 0
 
@@ -34,7 +34,6 @@ while True:
             mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
 
    
-    
     cv2.putText(img, f'FPS:{int(fps)}', (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     cv2.imshow("Test", img)
     
