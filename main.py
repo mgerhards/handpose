@@ -1,27 +1,7 @@
-from handdetector import HandDetector
+from draw_detector import DrawDetector
 import cv2
 import time
 import numpy as np
-
-class DrawDetector(HandDetector):
-    
-    def isDrawPose(self, img):
-        lmlist = self.findPosition(img)
-        if lmlist:
-            len1 = self._len(lmlist[8], lmlist[5])
-            len2 = self._len(lmlist[12],lmlist[9])
-            len3 = self._len(lmlist[16],lmlist[13])
-            len4 = self._len(lmlist[20],lmlist[17])
-            if len1 > len2 +len3 +len4:
-                return True
-            else:
-                return False
-        else:
-            return False
-
-    def _len(self, point1, point2):
-        vec = np.array([point2[1]-point1[1],point2[2]-point1[2]])
-        return np.linalg.norm(vec)
 
 def main():
     img_counter = 0
@@ -36,6 +16,9 @@ def main():
         lmlist = detector.findPosition(img)
         if detector.isDrawPose(img):
             print(True)
+            pos = detector.getPenPosition(img)
+            if type(pos) == np.ndarray:            
+                cv2.circle(img, (pos[0], pos[1]), 3, (255, 0, 0), cv2.FILLED)
         if len(lmlist) != 0:
             print(lmlist[4])
 
