@@ -19,6 +19,8 @@ def main():
             pos = detector.getPenPosition(img)
             if type(pos) == np.ndarray:            
                 cv2.circle(img, (pos[0], pos[1]), 3, (255, 0, 0), cv2.FILLED)
+                detector.add_to_board(pos)
+        detector.paint_board(img)
         if len(lmlist) != 0:
             print(lmlist[4])
 
