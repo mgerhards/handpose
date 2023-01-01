@@ -32,8 +32,14 @@ class DrawDetector(HandDetector):
         self.points.append(pos)
         
     def paint_board(self, img):
+        last_point = None
+        is_first_loop = True
         for point in self.points:
             cv2.circle(img, (point[0], point[1]), 3, (0, 255, 0), cv2.FILLED)
+            if not is_first_loop:
+                cv2.line(img, (last_point[0], last_point[1]), (point[0], point[1]), (0,128,0),3)
+            is_first_loop = False
+            last_point = point
         return img
         
     def _len(self, point1, point2):
