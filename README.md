@@ -27,21 +27,26 @@ This project implements an interactive whiteboard using Python and OpenCV. The w
    git clone https://github.com/yourusername/interactive-whiteboard.git
    cd interactive-whiteboard
    ```
-
-2. Install the required dependencies:
-
-   ```bash
-   pip install -r requirements.txt
+2. Create venv:
+    ```bash
+   python -m venv venv
+   venv/Scripts/activate
    ```
 
-   To generate the `requirements.txt` file, you can list all necessary libraries in `requirements.in` and run:
+3. Install the required dependencies:
+
+   ```bash
+   pip install wheel piptools setuptools
+   ```
+
+4. To generate the `requirements.txt` file, you can list all necessary libraries in `requirements.in` and run:
 
    ```bash
    pip-compile
    pip-sync
    ```
 
-   Ensure you have Python 3.7+ installed.
+   Ensure you have Python 3.12+ installed.
 
 ## Usage
 
